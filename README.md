@@ -1,5 +1,5 @@
 # Okrol
-A model created by me for checking strings and predicting things
+An ai model created by me for checking strings and predicting things
 ____________
 ![Screenshot 2024-05-02 at 08 25 35](https://github.com/Okerew/okrol/assets/93822247/95c08c7e-472a-47b2-bf6c-d1d7fe56cfa7)
 ____________
