@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import spacy
 from train import padded_sequences
+import os
 
 # Define the model
 class Net(nn.Module):
@@ -26,6 +27,8 @@ if '<UNK>' not in vocab:
     vocab['<UNK>'] = len(vocab)
 
 def interact_with_model(model, vocab):
+    print("Enter ?help for a list of available commands.")
+    interactions = []
     while True:
         user_input = input("Input your text: ")
         if user_input.lower() == "?quit":
@@ -34,6 +37,10 @@ def interact_with_model(model, vocab):
             print("Available commands:")
             print("?help - Show this help message")
             print("?quit - Quit the program")
+            continue
+        elif user_input.lower() == "?clear":
+            os.system('clear')
+            continue
 
         # Lowercase and trim user input
         user_input = user_input.lower().strip()
@@ -65,6 +72,16 @@ def interact_with_model(model, vocab):
         # Get the predicted class
         _, predicted = torch.max(output, 1)
 
+        interaction = {
+            'text': user_input,
+            'label': predicted.item()
+        }
+        interactions.append(interaction)
+
         print("Model's response:", predicted.item())
+
+    interaction_file = 'user_interaction.json'
+    with open(f'training_data/{interaction_file}', 'w') as f:
+        json.dump(interactions, f)
 
 interact_with_model(net, vocab)
