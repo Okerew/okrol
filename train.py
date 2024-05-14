@@ -11,9 +11,10 @@ def load_data(folder_path):
     labels = []
     for file_name in os.listdir(folder_path):
         with open(os.path.join(folder_path, file_name), 'r') as f:
-            file_contents = json.load(f)
-            data.append(file_contents['text'])
-            labels.append(file_contents['label'])
+            data_list = json.load(f)
+            for item in data_list:
+                data.append(item['text'])
+                labels.append(item['label'])
     return data, labels
 
 # Function to tokenize text data
@@ -78,6 +79,7 @@ sequences = convert_to_sequences(tokenized_data, vocab)
 max_length = max([len(sequence) for sequence in sequences])
 padded_sequences = pad_sequences(sequences, max_length)
 
+# Instantiate the model
 input_dim = len(vocab)
 hidden_dim = 6
 output_dim = 2
@@ -91,6 +93,7 @@ y = torch.tensor(labels)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(net.parameters(), lr=0.01)
 
+# Set number of epochs
 num_epochs = 10
 
 X = X.float()
@@ -111,7 +114,9 @@ for epoch in range(num_epochs):
 
     print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
 
+# Save the model
 torch.save(net, 'model/model.pt')
 
+# Save the vocabulary
 with open('model/vocab.json', 'w') as f:
     json.dump(vocab, f)
