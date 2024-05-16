@@ -1,4 +1,10 @@
-{
+[
+  {
   "text": "I love this product",
   "label": 1
-}
+ },
+ {
+    "text": "I it is great",
+    "label": 1
+ }
+]
