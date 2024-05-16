@@ -8,9 +8,15 @@ Then to run `python main.py`
 ____________
 To add training data add every line into seperate file like this
 ```
-{
+[
+  {
   "text": "I love this product",
   "label": 1
-}
+ },
+ {
+    "text": "I it is great",
+    "label": 1
+ }
+]
 ```
 Chatbot - https://github.com/Okerew/Okrol-Chatbot/tree/main
