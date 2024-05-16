@@ -9,12 +9,18 @@ import os
 def load_data(folder_path):
     data = []
     labels = []
+
     for file_name in os.listdir(folder_path):
         with open(os.path.join(folder_path, file_name), 'r') as f:
-            data_list = json.load(f)
-            for item in data_list:
-                data.append(item['text'])
-                labels.append(item['label'])
+            file_contents = json.loads(f.read())  
+            if isinstance(file_contents, list):
+                for entry in file_contents:
+                    data.append(entry['text'])
+                    labels.append(entry['label'])
+            else:
+                data.append(file_contents['text'])
+                labels.append(file_contents['label'])
+
     return data, labels
 
 # Function to tokenize text data
