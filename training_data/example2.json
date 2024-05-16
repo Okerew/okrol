@@ -1,4 +1,10 @@
-{
+[
+  {
   "text": "I have a problem with this product",
   "label": 0
-}
+ },
+ {
+   "text": "I hate this product",
+   "label": 0
+ } 
+]
