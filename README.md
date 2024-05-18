@@ -20,4 +20,5 @@ To add training data add every line into seperate file like this
 ]
 ```
 Chatbot - https://github.com/Okerew/Okrol-Chatbot/tree/main
+<br>
 Image Model(For now high entropy only) - https://github.com/Okerew/okral-image-model
