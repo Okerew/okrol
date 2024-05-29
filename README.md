@@ -7,7 +7,7 @@ To run firstly install the requirements `pip install -r requirements.txt`, `pyth
 Then to run `python main.py`
 ____________
 To add training data add every line into seperate file like this
-```
+``` json
 [
   {
   "text": "I love this product",
